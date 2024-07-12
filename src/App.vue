@@ -9,25 +9,37 @@ const currentTheme = localStorage.getItem('theme');
 
 
 if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
+    console.log(currentTheme)
     if (currentTheme === 'dark' && toggleSwitchRef.value) {
         toggleSwitchRef.value.checked = true;
     }
 }
 
-function switchTheme(e: Event) {
-    const target = e.target as HTMLInputElement;
-    if (target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+function switchTheme(e?: Event) {
+    let isDarkMode = false;
+
+    if (e) {
+        const target = e.target as HTMLInputElement;
+        isDarkMode = target.checked;
+    } else {
+        const currentTheme = localStorage.getItem('theme');
+        isDarkMode = currentTheme === 'dark';
+    }
+
+    if (isDarkMode) {
         localStorage.setItem('theme', 'dark');
-        document.documentElement.style.setProperty('--backgroundColor', '	rgb(41, 41, 41)');
+        document.documentElement.style.setProperty('--backgroundColor', 'rgb(41, 41, 41)');
+        document.documentElement.style.setProperty('--backgroundBox', 'rgb(84, 84, 84)');
         document.documentElement.style.setProperty('--fontColor', 'rgb(230, 230, 230)');
     } else {
-        document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
         document.documentElement.style.setProperty('--backgroundColor', 'white');
+        document.documentElement.style.setProperty('--backgroundBox', 'rgb(237, 237, 237)');
         document.documentElement.style.setProperty('--fontColor', 'black');
+    }
+
+    if (toggleSwitchRef.value) {
+        toggleSwitchRef.value.checked = isDarkMode;
     }
 }
 
@@ -36,6 +48,7 @@ onMounted(() => {
     if (toggleSwitch) {
         toggleSwitch.addEventListener('change', switchTheme);
     }
+    switchTheme();
 });
 </script>
 
@@ -43,11 +56,8 @@ onMounted(() => {
   <div class="corpo">
     <div class="teste">
       <Menu class="cantos"/>
-      <div class="containerTitle">
-        <div class="header">Pit Stop News</div>
-        <div class="subheader">Fast World Updates for Fast Busy People</div>
-      </div>
-      <div class="switch cantos">
+      <div class="containerTitle"></div>
+      <div class="cantos">
 
           <label class="theme-switch" for="checkbox">
 
@@ -58,6 +68,10 @@ onMounted(() => {
           </label>
       </div>
     </div>
+    <div class="containerTitle">
+        <div class="header">Pit Stop News</div>
+        <div class="subheader">Fast World Updates for Fast Busy People</div>
+      </div>
     <div class="container">
       <div class="navbar">
         <nav class="nav-links">
@@ -88,6 +102,7 @@ onMounted(() => {
 * {
     margin: 0;
   }
+
 .corpo{
   background-color: var(--backgroundColor);
   height: 100vh;
@@ -112,10 +127,7 @@ onMounted(() => {
   width: 60px;
   height: 34px;
   cursor: pointer;
-  left: 0;
   position: absolute;
-  right: 0;
-  top: 0;
   transition: .4s;
   border-radius: 30px;
 }
@@ -191,7 +203,6 @@ input:checked + .slider .iconLua {
 }
 
 .containerTitle {
-  margin-top: 50px;
   width: 100%;
   text-align: center;
 }
@@ -215,7 +226,6 @@ input:checked + .slider .iconLua {
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  transition: background-color 0.4s ease;
   color: var(--fontColor);
 }
 
