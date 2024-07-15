@@ -1,20 +1,30 @@
 <script setup lang="ts">
+import { defineProps } from 'vue';
 
+const props = defineProps<{
+  news: {
+    title: string;
+    description: string;
+    urlToImage: string;
+  };
+}>();
 
+console.log(props.news.title);
+console.log(props);
 </script>
 
 <template>
 
     <div class="caixa">
         <div class="imagem">
-            <img class="imagemMesmo"src="./../assets/noImageTemplate.jpg">
+            <img class="imagemMesmo" :src="props.news.urlToImage || './../assets/noImageTemplate.jpg'" />
         </div>
         <div class="resto">
             <div class="headline">
-                Esta notícia é um teste!!!
+                {{ props.news.title || "No Title" }}
             </div>
             <div class="description">
-                Isto é a descrição da notícia, yappingyapping
+                {{ props.news.description || "No Description" }}
             </div>
         </div>
 
@@ -31,6 +41,7 @@
     min-height: 100px;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .imagem{

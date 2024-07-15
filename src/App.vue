@@ -101,13 +101,14 @@ onMounted(() => {
 <style scoped>
 * {
     margin: 0;
+    height: 100%;
   }
 
 .corpo{
   background-color: var(--backgroundColor);
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
 }
+
     
 .theme-switch {
   display: inline-block;
@@ -157,7 +158,6 @@ input:checked + .slider:before {
   position:absolute;
   z-index:2;
   transition: .4s;
-  top: 4px;
   left: 5px;
 }
 
@@ -269,14 +269,14 @@ input:checked + .slider .iconLua {
 
 .header {
   font-family: 'Cocogoose', sans-serif;
-  font-size: clamp(32px, 4.1vw, 1000px);
+  font-size: clamp(24px, 4.1vw, 1000px);
   color: var(--fontColor);
 }
 
 .subheader {
   font-family: 'Cocogoose-thin';
   margin-bottom: 40px;
-  font-size: clamp(12px, 1.4vw, 1000px);
+  font-size: clamp(8px, 1.4vw, 1000px);
   color: var(--fontColor);
 }
 
