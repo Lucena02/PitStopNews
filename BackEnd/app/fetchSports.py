@@ -6,7 +6,7 @@ dicionarioDesporto = {
     'titles': [],
     'images': [],
     'links': [],
-    'source': []
+    'sources': []
 }
 
 def getSportsCNN():
