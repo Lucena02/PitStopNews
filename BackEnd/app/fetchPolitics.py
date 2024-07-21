@@ -2,15 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 
 
-dicionarioWorld = {
+dicionarioPolitics = {
     'titles': [],
     'images': [],
     'links': [],
     'sources': []
 }
 
-def getWorldsCNN():
-    url = 'https://edition.cnn.com/world'
+def getPoliticsCNN():
+    url = 'https://edition.cnn.com/politics'
 
 
     response = requests.get(url)
@@ -25,33 +25,33 @@ def getWorldsCNN():
             # Get the title
             title_tag = headline.find('span', class_='container__headline-text')
             if title_tag:
-                dicionarioWorld['titles'].append(title_tag.get_text(strip=True))                
+                dicionarioPolitics['titles'].append(title_tag.get_text(strip=True))                
             else:
-                dicionarioWorld['titles'].append("null")
+                dicionarioPolitics['titles'].append("null")
 
             # Get the article link
             link_tag = headline.find('a', class_='container__link')
             if link_tag and 'href' in link_tag.attrs:
                 stringg = "https://edition.cnn.com" + link_tag['href']
-                dicionarioWorld['links'].append(stringg)
+                dicionarioPolitics['links'].append(stringg)
             else:
-                dicionarioWorld['links'].append("null")
+                dicionarioPolitics['links'].append("null")
 
             responseTemp = requests.get(stringg)
             soup = BeautifulSoup(responseTemp.content, 'html.parser')
             img_tag = soup.find('img', class_='image__dam-img')
             if img_tag and 'src' in img_tag.attrs:
-                dicionarioWorld['images'].append(img_tag['src'])
+                dicionarioPolitics['images'].append(img_tag['src'])
             else:
-                dicionarioWorld['images'].append("null")
+                dicionarioPolitics['images'].append("null")
 
 
-            dicionarioWorld['sources'].append("CNN")
+            dicionarioPolitics['sources'].append("CNN")
             i+=1
 
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
 
-getWorldsCNN()
-print(dicionarioWorld)
+getPoliticsCNN()
+print(dicionarioPolitics)
