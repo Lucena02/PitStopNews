@@ -2,14 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-dicionarioScience = {
-    'titles': [],
-    'images': [],
-    'links': [],
-    'sources': []
-}
 
-def getScienceCNN():
+
+def getScienceCNN(dicionarioScience):
     url = 'https://edition.cnn.com/science'
 
 
@@ -50,6 +45,12 @@ def getScienceCNN():
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
-
-getScienceCNN()
-print(dicionarioScience)
+def fillDicScience():
+    dicionarioScience = {
+        'titles': [],
+        'images': [],
+        'links': [],
+        'sources': []
+    }
+    getScienceCNN(dicionarioScience)
+    return dicionarioScience

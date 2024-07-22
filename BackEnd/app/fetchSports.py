@@ -2,14 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 
-dicionarioDesporto = {
-    'titles': [],
-    'images': [],
-    'links': [],
-    'sources': []
-}
 
-def getSportsCNN():
+def getSportsCNN(dicionarioDesporto):
     url = 'https://edition.cnn.com/sport'
 
 
@@ -50,6 +44,12 @@ def getSportsCNN():
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
-
-getSportsCNN()
-print(dicionarioDesporto)
+def fillDicSports():   
+    dicionarioDesporto = {
+        'titles': [],
+        'images': [],
+        'links': [],
+        'sources': []
+    }
+    getSportsCNN(dicionarioDesporto)
+    return dicionarioDesporto

@@ -2,14 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-dicionarioWorld = {
-    'titles': [],
-    'images': [],
-    'links': [],
-    'sources': []
-}
 
-def getWorldsCNN():
+
+def getWorldsCNN(dicionarioWorld):
     url = 'https://edition.cnn.com/world'
 
 
@@ -52,6 +47,12 @@ def getWorldsCNN():
     else:
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
-
-getWorldsCNN()
-print(dicionarioWorld)
+def fillDicWorld():
+    dicionarioWorld = {
+        'titles': [],
+        'images': [],
+        'links': [],
+        'sources': []
+    }
+    getWorldsCNN(dicionarioWorld)
+    return dicionarioWorld

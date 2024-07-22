@@ -2,14 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-dicionarioPolitics = {
-    'titles': [],
-    'images': [],
-    'links': [],
-    'sources': []
-}
 
-def getPoliticsCNN():
+
+def getPoliticsCNN(dicionarioPolitics):
     url = 'https://edition.cnn.com/politics'
 
 
@@ -53,5 +48,15 @@ def getPoliticsCNN():
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
 
 
-getPoliticsCNN()
-print(dicionarioPolitics)
+
+
+
+def fillDicPolitics():
+    dicionarioPolitics = {
+        'titles': [],
+        'images': [],
+        'links': [],
+        'sources': []
+    }
+    getPoliticsCNN(dicionarioPolitics)
+    return dicionarioPolitics
