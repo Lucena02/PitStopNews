@@ -76,16 +76,16 @@ onMounted(() => {
       <div class="navbar">
         <nav class="nav-links">
           <div class="button-container">
-            <RouterLink class="buttonT hover-underline-animation" to="/">Sports</RouterLink>
+            <RouterLink class="buttonT hover-underline-animation" to="/sports">Sports</RouterLink>
           </div>
           <div class="button-container">
-            <RouterLink class="buttonT hover-underline-animation" to="/about">Politics</RouterLink>
+            <RouterLink class="buttonT hover-underline-animation" to="/politics">Politics</RouterLink>
           </div>
           <div class="button-container">
-            <RouterLink class="buttonT hover-underline-animation" to="/about">Inovation</RouterLink>
+            <RouterLink class="buttonT hover-underline-animation" to="/science">Science</RouterLink>
           </div>
           <div class="button-container">
-            <RouterLink class="buttonT hover-underline-animation" to="/about">World</RouterLink>
+            <RouterLink class="buttonT hover-underline-animation" to="/world">World</RouterLink>
           </div>
         </nav>
 

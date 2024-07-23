@@ -27,6 +27,6 @@ def start_scheduler():
     
     # Schedule task to run at specified times
     # scheduler.add_job(task, 'cron', hour=19, minute=7)
-    scheduler.add_job(task, 'cron', hour=19, minute=35)
+    scheduler.add_job(task, 'cron', hour=15, minute=51)
     
     scheduler.start()
