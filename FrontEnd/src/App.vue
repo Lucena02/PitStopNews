@@ -93,7 +93,9 @@ onMounted(() => {
       </div>
     </div>
     <br>
-    <RouterView />
+    <Transition>
+      <RouterView />
+    </Transition>
   </div>
 </template>
 
@@ -109,6 +111,15 @@ onMounted(() => {
   min-height: 100vh;
 }
 
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.4s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0.10;
+}
     
 .theme-switch {
   display: inline-block;
@@ -171,7 +182,6 @@ input:checked + .slider .iconLua {
 .hover-underline-animation {
   display: inline-block;
   position: relative;
-  color: rgb(134, 99, 10)
 }
 
 .hover-underline-animation::after {
@@ -189,6 +199,12 @@ input:checked + .slider .iconLua {
 }
 
 .hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation:hover::after,
+.router-link-active.hover-underline-animation::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }

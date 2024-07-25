@@ -15,7 +15,6 @@ onMounted(async () => {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
 
     // Assign the fetched data to the reactive references
     titles.value = data.titles;
@@ -23,11 +22,6 @@ onMounted(async () => {
     links.value = data.links;
     sources.value = data.sources;
 
-    // Log to verify the data assignment
-    console.log(titles);
-    console.log(images);
-    console.log(links);
-    console.log(sources);
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
   }
@@ -115,7 +109,7 @@ onMounted(async () => {
       margin-top: 10px;
     }
     .grelha-item {
-      margin-bottom: 10px; /* Adjust this value to set the gap between items */
+      margin-bottom: 15px; /* Adjust this value to set the gap between items */
     }
 }
 

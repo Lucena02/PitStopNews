@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import { SquareArrowOutUpRight } from 'lucide-vue-next';
 
 const props = defineProps<{
     title: string;
@@ -22,18 +23,31 @@ console.log(props);
         {{ props.title || "No Title" }}
       </div>
       <div class="description">
-        Source:
-        {{ props.source || "No Source" }}
+        <div class="d1">
+          Source:
+          {{ props.source || "No Source" }}
+        </div>
+        <div class="d2">
+          <a :href="props.link" >
+            <SquareArrowOutUpRight class="iconRedirect"/>
+          </a>
+          
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+.iconRedirect{
+  color: var(--fontColor);
+  height:18px;
+}
 .caixa {
   display: flex;
   background-color: var(--backgroundBox);
-  width: 35vw;
+  width: 40vw;
   height: 15vh;
   min-height: 100px;
   border-radius: 10px;
@@ -64,14 +78,28 @@ console.log(props);
 }
 
 .headline {
+  flex:6;
+  display:flex;
   margin-top: 15px;
   font-weight: bold;
   font-size: 20px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--fontColor) var(--backgroundBox);
 }
 
+
 .description {
+  flex:1;
+  display: flex;
   margin-top: auto;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.d2 {
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 @media (max-width: 800px) {
