@@ -20,7 +20,7 @@ def getPoliticsCNN(dicionarioPolitics):
             # Get the title
             title_tag = headline.find('span', class_='container__headline-text')
             if title_tag:
-                dicionarioPolitics['titles'].append(title_tag.get_text(strip=True))                
+                dicionarioPolitics['titles'].append(title_tag.get_text(strip=True))
             else:
                 dicionarioPolitics['titles'].append("null")
 
@@ -51,6 +51,7 @@ def getPoliticsCNN(dicionarioPolitics):
 
 
 
+
 def fillDicPolitics():
     dicionarioPolitics = {
         'titles': [],
@@ -59,4 +60,9 @@ def fillDicPolitics():
         'sources': []
     }
     getPoliticsCNN(dicionarioPolitics)
+
+    print(dicionarioPolitics)
     return dicionarioPolitics
+
+
+fillDicPolitics()
