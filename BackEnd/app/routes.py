@@ -10,7 +10,6 @@ def home():
 
 @app.route('/sports')
 def get_sports():
-    print(global_data['sports'])
     return jsonify(global_data['sports'])
 
 @app.route('/world')

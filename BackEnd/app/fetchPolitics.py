@@ -65,4 +65,3 @@ def fillDicPolitics():
     return dicionarioPolitics
 
 
-fillDicPolitics()
