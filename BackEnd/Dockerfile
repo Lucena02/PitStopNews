@@ -4,7 +4,7 @@ FROM python:3.12-slim
 WORKDIR /PitStopNews/Backend
 
 # Install dependencies
-COPY requirements.txt ./
+COPY requirements.txt /PitStopNews/Backend
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code

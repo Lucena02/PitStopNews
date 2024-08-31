@@ -1,5 +1,5 @@
 Flask==2.3.3
 Flask-Cors==4.0.1
 beautifulsoup4==4.12.2
-apscheduler==3.9.1
-
+apscheduler
+requests

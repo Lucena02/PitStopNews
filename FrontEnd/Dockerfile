@@ -9,10 +9,13 @@ COPY package*.json /PitStopNews/Frontend
 COPY public/ /PitStopNews/Frontend/public
 COPY src/ /PitStopNews/Frontend/src
 
+COPY index.html /PitStopNews/Frontend
 COPY vite.config.ts /PitStopNews/Frontend
 COPY tsconfig.json /PitStopNews/Frontend
+COPY tsconfig.app.json /PitStopNews/Frontend
+COPY tsconfig.node.json /PitStopNews/Frontend
 COPY env.d.ts /PitStopNews/Frontend
-COPY index.html /PitStopNews/Frontend
+
 
 RUN npm install
 
