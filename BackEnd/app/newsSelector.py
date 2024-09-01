@@ -1,6 +1,6 @@
 import requests
 from openai import OpenAI
-from secret import *
+from app.secret import *
 
 
 client = OpenAI(
@@ -26,7 +26,7 @@ def getNews():
     
 def score_title_with_gpt4(titles):
     #prompt = f"On a scale of 0 to 10, how important is the following news title: \"{title}\"? Provide only the score."
-    prompt = f"From all the news, give me only the 6 more important titles, judging by how important is the news title, considering objectiveness and not being clickbait and the importance of the news itself: \"{titles}\". Don't include repeated news, or news that provide the same information. Provide only the titles."
+    prompt = f"From all the news, give me only the 6 more important titles, judging by how important is the news title, considering objectiveness and not being clickbait and the importance of the news itself: \"{titles}\". Don't include repeated news, or news that provide the same information. Provide only the titles without using quotation marks."
     
     
     try:

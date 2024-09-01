@@ -1,6 +1,7 @@
+import re
 import requests
 from bs4 import BeautifulSoup
-
+from app.newsSelector import score_title_with_gpt4
 
 
 
@@ -97,6 +98,31 @@ def getScienceBBC(dicionarioScience):
 
 
 
+def fetchTitlesInDict(titles, dicionarioPolitics):
+    dicionarioPoliticsFinal = {
+        'titles': [],
+        'images': [],
+        'links': [],
+        'sources': []
+    }
+    for titulo in titles:
+        for i, item in enumerate(dicionarioPolitics['titles']):
+            item = item.replace('\xa0', ' ').strip()
+            #print("\n")
+            titulo = titulo.rstrip()
+            #print(repr(titulo))
+            #print(repr(item))
+            if titulo == item:
+                print("IGUAL")
+                dicionarioPoliticsFinal['titles'].append(dicionarioPolitics['titles'][i])
+                dicionarioPoliticsFinal['images'].append(dicionarioPolitics['images'][i])
+                dicionarioPoliticsFinal['links'].append(dicionarioPolitics['links'][i])
+                dicionarioPoliticsFinal['sources'].append(dicionarioPolitics['sources'][i])
+                break
+
+    return dicionarioPoliticsFinal
+
+
 def fillDicScience():
     dicionarioScience = {
         'titles': [],
@@ -106,5 +132,12 @@ def fillDicScience():
     }
     getScienceCNN(dicionarioScience)
     getScienceBBC(dicionarioScience)
-    return dicionarioScience
+    top_news = score_title_with_gpt4(dicionarioScience['titles'])
+    #print("AS MELHORES NOTICIAS DE POLITICA")
+    #print(top_news)
+    matches = re.findall(r'\d+\.\s(.*?)(?=\n\d+\.|$)', top_news)
+    #print(matches)
+    
+    return fetchTitlesInDict(matches, dicionarioScience)
+
 
