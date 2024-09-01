@@ -31,6 +31,7 @@ onMounted(async () => {
 <template>
   <main>
     <div class="container">
+      <p v-if="titles.length === 0" class="noNews">No news available at the moment.</p>
       <div class="grelha">
         <singleNews 
           v-if="titles[0]"
@@ -89,6 +90,16 @@ onMounted(async () => {
 * {
     margin: 0;
   }
+
+.noNews{
+  margin-top: 5%;
+  display:flex;
+  color: var(--fontColor);
+  font-family: Arial;
+  font-weight: 600;
+  font-size:3.4vw;
+  align-items: center;
+}
 
 .container{
   display:flex;

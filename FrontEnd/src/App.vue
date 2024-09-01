@@ -55,9 +55,7 @@ onMounted(() => {
 <template>
   <div class="corpo">
     <div class="teste">
-      <Menu class="cantos"/>
-      <div class="containerTitle"></div>
-      <div class="cantos">
+
 
           <label class="theme-switch" for="checkbox">
 
@@ -66,7 +64,7 @@ onMounted(() => {
               <Moon class="iconLua"/>
             </div>
           </label>
-      </div>
+
     </div>
     <div class="containerTitle">
         <div class="header">Pit Stop News</div>
@@ -122,11 +120,13 @@ onMounted(() => {
 }
     
 .theme-switch {
-  display: inline-block;
+  padding:10px;
+  display: flex; /* Change from inline-block to flex */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
   height: 34px;
   position: relative;
-  width: 30px;
-  margin-right: 50px;
+  width: 100px;
 }
 
 .theme-switch input {
@@ -210,13 +210,31 @@ input:checked + .slider .iconLua {
 }
 
 .cantos {
-  padding: 30px;
   align-self: flex-start;
 }
 
 .teste {
+  height: 8vh;
   display: flex;
 }
+@media  (max-width: 800px) {
+  .teste{
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .theme-switch {
+    padding: 0px;
+    display: flex; /* Change from inline-block to flex */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    height: 34px;
+    position: relative;
+    width: 100px;
+  }
+}
+
 
 .containerTitle {
   width: 100%;
@@ -254,12 +272,7 @@ input:checked + .slider .iconLua {
   align-items: center;
 }
 
-.button-container:not(:last-child)::after {
-  content: '';
-  width: 1px;
-  height: 100%;
-  background-color: rgb(159, 159, 159);
-}
+
 
 .container {
   margin-top: 5vh;
@@ -298,7 +311,21 @@ input:checked + .slider .iconLua {
 
 .navbar nav {
   display: flex;
-  gap: 0.2px;
+  gap: 1px;
   /* Adjust the spacing between links as needed */
+}
+
+
+@media  (max-width: 800px) {
+  .navbar nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15vw;
+    text-decoration: none;
+  }
+  .buttonT{
+    font-size:4vw;
+    margin-bottom: 10px;
+  }
 }
 </style>

@@ -14,8 +14,11 @@ global_data = {
     'sports': None,
 }
 
+last_update = "00:00"
+
 def task():
     global global_data
+    global last_update
     global_data['world'] = fillDicWorld()
     global_data['politics'] = fillDicPolitics()
     global_data['science'] = fillDicScience()
@@ -27,6 +30,6 @@ def start_scheduler():
     
     # Schedule task to run at specified times
     # scheduler.add_job(task, 'cron', hour=19, minute=7)
-    scheduler.add_job(task, 'cron', hour=16, minute=33)
-    
+    scheduler.add_job(task, 'cron', hour=12, minute=00)
+    scheduler.add_job(task, 'cron', hour=0, minute=1)
     scheduler.start()
