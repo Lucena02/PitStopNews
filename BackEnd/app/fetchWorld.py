@@ -63,7 +63,6 @@ def getWorldBBC(dicionarioWorld):
         #headlines.append(soup.find_all('div', class_="hprnWz"))
         headlines = soup.find_all('div', {'data-testid': 'cambridge-card'})
         i = 0
-        print(headlines)
 
         for headline in headlines:
             if i == 15 : break
@@ -85,7 +84,6 @@ def getWorldBBC(dicionarioWorld):
                 dicionarioWorld['links'].append("null")
 
 
-            print(stringg)
             responseTemp = requests.get(stringg)
             soup = BeautifulSoup(responseTemp.content, 'html.parser')
             img_tag = soup.find('img', class_='hIXOPW')
@@ -94,7 +92,6 @@ def getWorldBBC(dicionarioWorld):
             else:
                 dicionarioWorld['images'].append("null")
 
-            print("TESTEEEEEEEEEEEE")
             dicionarioWorld['sources'].append("BBC")
             i+=1
 
@@ -118,7 +115,6 @@ def fetchTitlesInDict(titles, dicionarioPolitics):
             #print(repr(titulo))
             #print(repr(item))
             if titulo == item:
-                print("IGUAL")
                 dicionarioPoliticsFinal['titles'].append(dicionarioPolitics['titles'][i])
                 dicionarioPoliticsFinal['images'].append(dicionarioPolitics['images'][i])
                 dicionarioPoliticsFinal['links'].append(dicionarioPolitics['links'][i])

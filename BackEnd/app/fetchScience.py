@@ -113,7 +113,6 @@ def fetchTitlesInDict(titles, dicionarioPolitics):
             #print(repr(titulo))
             #print(repr(item))
             if titulo == item:
-                print("IGUAL")
                 dicionarioPoliticsFinal['titles'].append(dicionarioPolitics['titles'][i])
                 dicionarioPoliticsFinal['images'].append(dicionarioPolitics['images'][i])
                 dicionarioPoliticsFinal['links'].append(dicionarioPolitics['links'][i])

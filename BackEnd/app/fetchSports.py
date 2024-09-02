@@ -29,7 +29,6 @@ def getSportsCNN(dicionarioDesporto):
             link_tag = headline.find('a', class_='container__link')
             if link_tag and 'href' in link_tag.attrs:
                 stringg = "https://edition.cnn.com" + link_tag['href']
-                print(stringg)
                 dicionarioDesporto['links'].append(stringg)
             else:
                 dicionarioDesporto['links'].append("null")
@@ -105,12 +104,10 @@ def fetchTitlesInDict(titles, dicionarioPolitics):
     for titulo in titles:
         for i, item in enumerate(dicionarioPolitics['titles']):
             item = item.replace('\xa0', ' ').strip()
-            print("\n")
+
             titulo = titulo.rstrip()
-            print(repr(titulo))
-            print(repr(item))
+
             if titulo == item:
-                print("IGUAL")
                 dicionarioPoliticsFinal['titles'].append(dicionarioPolitics['titles'][i])
                 dicionarioPoliticsFinal['images'].append(dicionarioPolitics['images'][i])
                 dicionarioPoliticsFinal['links'].append(dicionarioPolitics['links'][i])

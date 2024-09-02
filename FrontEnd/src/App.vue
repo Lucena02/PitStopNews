@@ -50,6 +50,8 @@ onMounted(() => {
     }
     switchTheme();
 });
+
+
 </script>
 
 <template>
@@ -94,7 +96,11 @@ onMounted(() => {
     <Transition>
       <RouterView />
     </Transition>
+    <div class="footer">
+      <a href="mailto:your-email@example.com" class="aFooter">Contact me</a>
+    </div>
   </div>
+  
 </template>
 
 
@@ -328,4 +334,33 @@ input:checked + .slider .iconLua {
     margin-bottom: 10px;
   }
 }
+
+
+@media  (max-width: 300px) {
+  .navbar nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15vw;
+    text-decoration: none;
+  }
+  .buttonT{
+    font-size:6vw;
+    margin-bottom: 1px;
+  }
+}
+
+.footer{
+  margin-top:20px;
+  text-align: center;
+}
+
+.aFooter{
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--fontColor);
+  font-family: Arial;
+  font-size:20px;
+}
+
 </style>
